@@ -1,4 +1,7 @@
-
+#This program uses a Support Vector Machine (SVM) to train a model on two
+#datasets
+# a bot and a human dataset
+#
 
 #packages/functions to import
 import pandas as pd

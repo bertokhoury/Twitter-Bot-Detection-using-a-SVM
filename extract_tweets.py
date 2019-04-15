@@ -1,21 +1,18 @@
-
-#import libs
-import tweepy
-
+#This program gives the ability to extract a Twitter accounts tweets
+#via the tweepy API
 
 #to install using pip -> 'pip install tweepy'
 #to install using conda -> 'conda install tweepy'
 
+#import libs
+import tweepy
 
 ##To obtain keys
 # 1) Login into twitter developer section
 # 2) Locate 'Create an App' and fill out the details of the app
 # 3) Click 'Create your Twitter Application'
 # 4) App details such as consumer_secret and consumer_key will be displayed
-# 5) click 'Create my Access Token' ..Page will refresh generating
-#       access_key
-
-
+# 5) click 'Create my Access Token' ..Page will refresh generating access_key
 consumer_key = ""
 consumer_secret = ""
 access_key = ""
@@ -27,6 +24,7 @@ def get_tweets(username) :
 
     #authorize consumer_key and consumer_secret
     authorize = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    print("Authorizing Keys and Tokens...")
 
     #get access to user using access_key and access_secret
     authorize.set_access_token(access_key, access_secret)
@@ -52,11 +50,11 @@ def get_tweets(username) :
     print("Printing the Tweets \n")
     print(array)
 
-#Testing Code
+#Test for get_tweets()
 #Make sure to enter username in to extract the tweets
 #
-#if __name__ == '__main__':
-    #get_tweets(username)
+if __name__ == '__main__':
+    get_tweets("")
 
 
 
