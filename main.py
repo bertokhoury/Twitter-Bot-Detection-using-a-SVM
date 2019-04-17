@@ -13,6 +13,7 @@ from sklearn import metrics
 from sklearn import preprocessing
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
 
 from plotnine import *
 #from ggplot import *
@@ -34,7 +35,8 @@ combined_dataset = pd.concat([genuine, fake])
 
 #normalize labels
 le = preprocessing.LabelEncoder()
-le.fit_transform(combined_dataset['screen_name','user_tweeted','user_retweeted', 'user_favourited','user_replied','likes_per_tweet','retweets_per_tweet', 'lists_per_user','follower_friend_ratio','tweet_frequency','favourite_tweet_ratio','age_of_account_in_days','sources_count','urls_count','cdn_content_in_kb','source_identity'])
+vectorizer = CountVectorizer()
+vectorizer.fit_transform(combined_dataset[['screen_name','user_tweeted','user_retweeted', 'user_favourited','user_replied','likes_per_tweet','retweets_per_tweet', 'lists_per_user','follower_friend_ratio','tweet_frequency','favourite_tweet_ratio','age_of_account_in_days','sources_count','urls_count','cdn_content_in_kb','source_identity']])
 #combined_dataset.screen_name = le.transform(combined_dataset.screen_name)
 #le.fit_transform(combined_dataset.user_tweeted)
 #le.fit_transform(combined_dataset.user_retweeted)
@@ -64,6 +66,7 @@ X_train, X_test, y_train, y_test = train_test_split(train_specifications,train_d
 #use C-Support Vector Classification
 
 svc_object= svm.SVC()
+#vectorizer.svc_object
 #svc_object_float = pd.to_numeric(svc_object)
 svc_object.fit(X_train, y_train)
 
